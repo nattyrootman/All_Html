@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<head>
+    <title>les Génériques</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+   <style>
+
+       body{
+          
+
+        box-sizing: border-box;
+
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all{
+        
+        display: grid;
+       grid-gap: 25px;
+ 
+        grid-template-columns: auto;
+        
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all>:not(.result){
+        background-color: rgb(21, 46, 46);
+    
+
+       }
+
+      .all>div{
+    
+         
+        overflow: auto;
+        align-items: center;
+
+        padding: 15px;
+      
+
+        border:1px solid rgb(226, 188, 188);
+       
+        border-radius: 15px;
+       }
+
+     
+        .Pr{
+        
+       
+        font-size:14px;
+         font: normal;
+           color: rgb(205, 87, 221);
+            margin-left: 5px;
+           
+       }
+
+       
+
+       .result{
+           overflow: auto;
+           
+           padding: 3px;
+           border-radius: 15px;
+           border: 2px solid black;
+          
+           font-size: 14px;
+           background-color: rgb(228, 130, 130);
+           color: black;
+       }
+    
+    .func{
+        color: lightsalmon;
+    }
+   
+
+    .com{
+    
+        color: rgb(125, 144, 112);
+        font-size: 10px;
+    }
+
+    .gen{
+        color: springgreen;
+    }
+
+    .pstyle:not(.pstyle-1){
+
+        font-family:'Times New Roman', Times, serif;
+        margin-right: 15px;
+        margin-left: 15px;
+        box-sizing: border-box ;
+        color: rgb(10, 10, 10);
+        word-break: normal;
+        margin-top: 35px;
+        margin-bottom: 0px;
+    }
+    .pstyle-1{
+        font-size: 12px;
+        color: slategray;
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font:bold;
+        
+    }
+    
+
+    
+
+
+   </style>
+</head>
+<body>
+    
+     
+
+     
+    <p class="pstyle">
+        <h2>1 La Fonction map{} </h2>
+        La fonction  map prend les éléments d’une collection et les transforme selon une formule
+        que vous spécifiez. Il renvoie les résultats de cette transformation sous la forme d’une nouvelle liste.
+    </p>
+
+
+
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+ 
+<strong class="func">
+fun main()</strong>  {
+
+    val list= listOf(1,2,3,4,5)
+
+
+    var f=list.map{ it *2}
+
+    println(f)
+
+    
+     }
+ 
+        </pre>
+    </code>
+</div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+[2, 4, 6, 8, 10]
+
+    </pre>
+    </div>
+    </div><br>
+
+
+    <p class="pstyle-1">
+
+        <strong>Explication:</strong> dans cet exemple on a crée une liste avec type entier et avions multiplié chacque élément par it*2
+        it représente chaque élément de la liste dont chaque élément est multiplié par 2  
+      
+          </p><br><br>
+
+
+
+
+           
+    <p class="pstyle">
+        <h2>1 La Fonction map{} dans une collection Complexe </h2>
+       Dans cet exemple nous allons utiliser map sur liste d'Étudiant 
+    </p>
+<div class="all">
+    <div class="item">
+        <code>
+            <pre class="Pr">
+
+
+    <strong class="func">
+ fun main()</strong>  {
+    
+
+ val list= listOf(
+    Étudiant("Amed",25,"12ém",7.9),
+    Étudiant("jack",26,"12ém",9.0),
+    Étudiant("amel",22,"9ém",10.20),
+    Étudiant("moussa",27,"11ém",8.10),
+    Étudiant("korro",20,"11",11.20)
+    )
+
+    val map=list.map{it.name}
+
+       println(map)
+         
+ }
+     
+            </pre>
+        </code>
+    </div>
+    <div class="result">
+        <h3 class="headers">Résultat:</h3>
+        <pre style="color: black;font-size: 15px">
+       
+    [Amed, jack, amel, moussa, korro]
+    
+        </pre>
+        </div>
+        </div><br>
+
+        <p class="pstyle-1">
+
+            <strong>Explication:</strong> dans cet exemple on a crée une liste d'Étudiant et nous avions just voulu retourner à une nouvelle
+            liste uniquement composéé des noms sans les notes ni autres données 
+        
+          
+              </p><br><br>  
+      
+</body>
+</html>
