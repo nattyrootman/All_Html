@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<head>
+    <title>les Génériques</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+   <style>
+
+       body{
+          
+
+        box-sizing: border-box;
+
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all{
+        
+        display: grid;
+       grid-gap: 25px;
+ 
+        grid-template-columns: auto;
+        
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all>:not(.result){
+        background-color: rgb(21, 46, 46);
+    
+
+       }
+
+      .all>div{
+    
+         
+        overflow: auto;
+        align-items: center;
+
+        padding: 15px;
+      
+
+        border:1px solid rgb(226, 188, 188);
+       
+        border-radius: 15px;
+       }
+
+     
+        .Pr{
+        
+        
+        font-size: 16px;
+         font: normal;
+           color: rgb(205, 87, 221);
+            margin-left: 5px;
+           
+       }
+
+       
+
+       .result{
+           overflow: auto;
+           
+           padding: 3px;
+           border-radius: 15px;
+           border: 2px solid black;
+          
+           font-size: 20px;
+           background-color: rgb(228, 130, 130);
+           color: black;
+       }
+    
+    .func{
+        color: lightsalmon;
+    }
+   
+
+    .com{
+    
+        color: slategray;
+        font-size: 12px;
+    }
+
+    .gen{
+        color: springgreen;
+    }
+
+    .pstyle:not(.pstyle-1){
+
+        font-family:'Times New Roman', Times, serif;
+        margin-right: 15px;
+        margin-left: 15px;
+        box-sizing: border-box ;
+        color: rgb(10, 10, 10);
+        word-break: normal;
+        margin-top: 35px;
+        margin-bottom: 0px;
+    }
+ .pstyle-1{
+     color: green;
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+       
+    }
+    
+
+
+
+   </style>
+</head>
+<body>
+    
+     
+    <p class="pstyle">
+        <h2>Les Lambdas </h2>
+        Nous allons vous amener dans le monde de lambda et vous allez découvrir comment lambdas sont très puissants 
+        et flexibles ,Kolin a une multitude des fonctions qu'on ne serait pas  capable de les toutes décrire dans ce tuto.
+        Les lambdas sont des fonctions anonymes sans  nom ,les lambdas très utiles surtout quand il s'agit des collections
+        par exemple(trier une liste par nom ou nombre par  d'ordre croissant ou décroissant )
+         L'Expression Lambdas est un type d'objet contenant un block de code.
+    </p>
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+<strong class="com">
+    // Simpe exemple de  le Lambda
+</strong>
+<strong class="gen">
+fun main()</strong>  {
+
+    <strong class="com">
+    //syntaxe de Lambdas</strong>
+     { x:type -> x }
+                 |
+<strong class="com">
+   //avec un seul paramètre Int</strong>
+    var lamb = { x:Int-> x }
+
+      println (lamb (10))
+
+   }
+        </pre>
+    </code>
+</div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+     10
+    </pre>
+    </div>
+    </div><br><br>
+
+
+    <p class="pstyle">
+        <h2>Lambdas avec plusieurs Paramètres</h2>
+        On peut également faire des opérations avec dans les lambdas avec plusieurs paramètres
+        dans ce exemple nous allez découvrir comment faire passer plusieurs paramètres à une fonction Lambda.
+    </p>
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+<strong class="gen">
+fun main()</strong>  {
+
+    var lamb= {x:Int ,y:Int-> x+y }
+
+    println (lamb(5,10))
+
+  }
+        </pre>
+    </code>
+</div>
+
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px"> 
+     15
+    </pre>
+    </div>
+    </div>
+   
+    <p class="pstyle-1">
+      <strong>Explication:</strong>
+      x représente 5 et y représente 10
+       donc dans l'expression lambda nous avions fait passer deux paramètres Int(Entier) ces deux paramèttres sont x et y
+       c'est juste un exemple vous pouvez donner n'importe quel nom que vous souhaitez ,moi j'ai juste choisi x et y pour la simplicité
+       et vous pouvez également choisir n'importe quel type 
+      {x:Int , y:Int -> x + y }  veut dire x+y et retour du résultat.
+        </p><br><br>
+ 
+ 
+
+     
+     <p class="pstyle">
+    <h2>Affecter un Lambda à une Variable</h2>
+    On peut également affecter un lambda à une variable de la même manière que vous affectez tout autre type d’objet à une
+    variable en définissant la variable à l’aide de val ou var, puis en lui affectant le lambda. 
+    Dans cet exemple nous allons faire plusieurs opérations avec de types variés dans des Expressions lamda et affecter
+    ces des lamdas à des variables variées.
+          </p>
+    
+    <div class="all">
+    <div class="item">
+        <code>
+            <pre class="Pr">
+    <strong class="gen">
+fun main()</strong> {
+        
+ var st= {a:Int,b:Int->"a:$a,b:$b"}
+ var plus= {a:Int,b:Int-> a+b}
+ var moins= {a:Int,b:Int-> a-b}
+ var multi= {a:Int,b:Int-> a*b}
+ var divis= {a:Int,b:Int-> a/b}
+
+  <strong class="com">
+//Affecter les Lambdas
+  aux variable suivantes</strong> 
+ var str=st(30,40)
+ var plu = plus(20,10)<strong class="com">// x+y=(20+10)</strong>
+ var moin= moins(5,10)<strong class="com">//x-y=(5-10)</strong>
+ var mult= multi(5,10)<strong class="com">//x*y=(5*10)</strong>
+ var divi= divis(50,2)<strong class="com">//x/y=(5/10)</strong>
+
+  println("a et b =$str")<strong class="com">//a,b =(30,40)</strong>
+  println("x+y =$plu")
+  println("x-y =$moin")
+  println("x*y =$mult")
+  println("x/y=$divi")
+
+}
+  
+            </pre>
+        </code>
+    </div>
+    <div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+      a,b =a:30 et b:40
+      x+y =30
+      x-y =-5
+      x*y =50
+      x/y =25
+    </pre>
+     </div>
+     </div><br><br>
+
+        <p class="pstyle">
+            <h2>Les expressions Lambda ont un type </h2>
+            Comme tout autre type d’objet, un lambda a un type. La différence avec le type d’un lambda, cependant,
+            est qu’il ne spécifie pas de nom de classe que le lambda implémente. Au lieu de cela,
+            il spécifie le type de  paramètres et valeur de retour de lambda.
+                  </p>
+    
+            <div class="all">
+            <div class="item">
+                <code>
+                    <pre class="Pr">
+            
+            <strong class="gen">
+    fun main()</strong>  {
+            
+     var st:()->String= {"Bonjour"}
+
+     var tp:(Int,Int)->Int={x:Int,y:Int->x+y}
+    
+     println(st())
+    
+     println (tp(10,20))
+        
+  }
+          
+      </pre>
+   </code>
+   </div>
+            
+  <div class="result">
+   <h3 class="headers">Résultat:</h3>
+   <pre style="color: black;font-size: 15px">    
+    st: Bonjour
+    tp: 30
+</pre>
+</div>
+</div><br><br>
+
+
+<p class="pstyle">
+    <h2>Vous pouvez passer un lambda à une fonction</h2>
+En plus d’affecter un lambda à une variable, vous pouvez également en utiliser un ou plusieurs comme paramètres de fonction.
+Cela vous permet de passer un comportement spécifique à une fonction plus généralisée.
+Pour voir comment cela fonctionne, nous allons écrire une fonction nommée ajout()
+
+          </p>
+    
+    <div class="all">
+    <div class="item">
+        <code>
+            <pre class="Pr">
+
+<strong class="=com">fun ajout</strong> (x:Int,sum:(Int)->Int):Int{
+
+        var result=sum(x)
+
+        return result
+
+    }
+
+    <strong class="gen">
+    fun main()</strong> {
+    
+     var d= play(2,{x:Int->x+2})
+
+
+   // Vous pouvez déplacer 
+   le lambda EN DEHORS des ()
+     var d= play(10){x:Int->x*2}
+
+       println(d)
+  }
+  
+            </pre>
+        </code>
+    </div>
+
+    <div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+       20
+    </pre>
+     </div>
+     </div><br><br>
+
+        <p class="pstyle">
+            <h2>Une fonction peut renvoyer un lambda</h2>
+            une fonction peut également en renvoyer une en spécifiant les lambda
+            type comme type de retour.
+            Dans cet exemple nous allons créer une function nommée échange()qui prend juste un seul paramètre String et  qui convertit des plusieurs monnaie en Euro
+                  </p>
+    
+            <div class="all">
+            <div class="item">
+                <code>
+                    <pre class="Pr">
+<strong class="gen">fun taux</strong>(chge:String):(Double)->Double{
+
+     if(chge=="fcfa"){
+
+        return{it*655}
+
+    }else if(chge=="us"){
+
+        return{it*1.16}
+                        
+    }else if (chge=="uk"){
+
+      return{it*0.45}
+                        
+    }else {
+
+      return { it }
+     }
+    }
+    <strong style="color: rgb(226, 215, 215);">
+_____________________________________</strong>
+                    
+<strong class="com">
+//fonction principale 
+  pour exécuter notre code// </strong>
+<strong class="gen">
+ fun main()</strong>  {
+     
+  var fcfa= taux("fcfa")(1.0)
+  var us= taux("us")(1.0)
+  var uk= taux("uk")(1.0)
+    
+    
+  println("1.0 euro :$fcfa fcfa")
+  println("1.0 euro :$us dallar")
+  println("1.0 euro :$uk livre")
+
+}
+          
+      </pre>
+   </code>
+   </div>  
+  <div class="result">
+   <h3 class="headers">Résultat:</h3>
+   <pre style="color: black;font-size: 15px">   
+    1.0 euro :655.0 fcfa
+    1.0 euro :1.16 dallar
+    1.0 euro :0.45 livre 
+</pre>
+</div>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

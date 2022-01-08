@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<head>
+    <title>les Génériques</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+   <style>
+
+       body{
+          
+
+        box-sizing: border-box;
+
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all{
+        
+        display: grid;
+       grid-gap: 25px;
+ 
+        grid-template-columns: auto;
+        
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all>:not(.result){
+        background-color: rgb(21, 46, 46);
+    
+
+       }
+
+      .all>div{
+    
+         
+        overflow: auto;
+        align-items: center;
+
+        padding: 15px;
+      
+
+        border:1px solid rgb(226, 188, 188);
+       
+        border-radius: 15px;
+       }
+
+     
+        .Pr{
+        
+       
+        font-size:14px;
+         font: normal;
+           color: rgb(205, 87, 221);
+            margin-left: 5px;
+           
+       }
+
+       
+
+       .result{
+           overflow: auto;
+           
+           padding: 3px;
+           border-radius: 15px;
+           border: 2px solid black;
+          
+           font-size: 14px;
+           background-color: rgb(228, 130, 130);
+           color: black;
+       }
+    
+    .func{
+        color: lightsalmon;
+    }
+   
+
+    .com{
+    
+        color: rgb(125, 144, 112);
+        font-size: 10px;
+    }
+
+    .gen{
+        color: springgreen;
+    }
+
+    .pstyle:not(.pstyle-1){
+
+        font-family:'Times New Roman', Times, serif;
+        margin-right: 15px;
+        margin-left: 15px;
+        box-sizing: border-box ;
+        color: rgb(10, 10, 10);
+        word-break: normal;
+        margin-top: 35px;
+        margin-bottom: 0px;
+    }
+    .pstyle-1{
+        font-size: 12px;
+        color: slategray;
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font:bold;
+        
+    }
+    
+
+    
+
+
+   </style>
+</head>
+<body>
+    
+     
+
+     
+    <p class="pstyle">
+        <h2>1 La Fonction filter </h2>
+
+
+
+       Cette fonction vous permet de rechercher,
+        ou filter, une collection selon certains critères que vous lui transmettez à l’aide d’un lambda.
+        Pour la plupart des collections, le filtre renvoie une liste qui inclut tous les éléments qui correspondent à vos critères, qui
+        vous pouvez ensuite l’utiliser ailleurs dans votre code. Toutefois, s’il est utilisé avec une carte, il renvoie une carte. Le
+        le code suivant 
+    </p>
+
+
+
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+ 
+<strong class="func">
+fun main()</strong>  {
+
+    val list= listOf(1,2,3,4,5)
+
+
+    var f=list.filter{ it > 3}
+
+    println(f)
+
+    
+     }
+ 
+        </pre>
+    </code>
+</div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+    Filter:[ 4 ,5 ]
+
+    </pre>
+    </div>
+    </div><br>
+    <p class="pstyle-1">
+
+  <strong>Explication:</strong> dans cet exemple on avait crée une simple liste de type entier(Int )
+ et nous voulions savoir les élements qui sont superieus à 3 et pour faire ça ,nous avions 
+ utilisé la fonction filter avec une opération de comparaison et la fonction filter nous donne une liste qui correspond
+ à notre demande c est à dire 4,5 sont les seuls élements superieus à 3
+
+    </p><br><br>
+
+
+   
+
+
+    
+     
+    <p class="pstyle">
+        <h2>2 filter en Collection</h2>
+
+        le code suivant, par exemple, utilise la fonction de filtre pour obtenir une liste   des étudiants dont leurs notes sont superieures ou égales 10 pour etre admises à la fac ou au lycée
+
+
+
+    </p>
+
+
+
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+
+    data<strong class="gen"> class Étudiant</strong>(
+        val nom:String,
+        val âge:Int,
+        val année:String ,
+        val note:Double)
+        
+<strong style="color: rgb(226, 215, 215);">
+____________________________________</strong>
+ 
+<strong class="func">
+fun main()</strong>  {
+
+    val list= listOf(
+        Étudiant("Amed",25,"4ém",7.9),
+        Étudiant("jack",26,"3ém",9.0),
+        Étudiant("amel",22,"2ém",10.20),
+        Étudiant("moussa",27,"5ém",12.10),
+        Étudiant("korro",20,"1ère",11.20))
+
+
+      val filt = list.filter{ it.note>=10.0 }
+        
+         println(it) 
+
+
+     }
+ 
+        </pre>
+    </code>
+</div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+   
+    Étudiant(nom=amel, âge=22, année=2ém, note=10.2)
+    Étudiant(nom=moussa, âge=27, année=5ém, note=12.10)
+    Étudiant(nom=korro, âge=20, année=1ère, note=11.2)
+    </pre>
+    </div>
+    </div><br>
+
+    <p class="pstyle-1">
+
+        <strong>Explication:</strong>Dans cet exemple nous avions créer une donnéé nommée(Etudiant) et 
+        nous avions crée une liste d'objet Etudiant et nous voulions juste afficher seulement les Etudiants qui ont les notes 
+        superieures ou égales à 10 pour avoir une admission
+        c' est avec la fonction filter qu on peut faire ça facilement
+
+</p>
+
+
+//
+
+
+
+
+
+    
+     
+<p class="pstyle">
+    <h2>3 Un autre exemple sur la Fonction filter{} </h2>
+   
+    Dans ce tuto nous voudrons seulement filtrer tous les étudiants de la 12ém 
+    c,est à dire afficher uniquement les  étudiants qui sont en 12ém
+
+
+    
+</p>
+
+
+
+
+
+<div class="all">
+    <div class="item">
+        <code>
+            <pre class="Pr">
+               
+
+<strong style="color: rgb(226, 215, 215);">
+____________________________________</strong>
+    <strong class="gen">
+    fun main()</strong>  {
+    
+
+        val list= listOf(
+        Étudiant("Amed",25,"12ém",7.9),
+        Étudiant("jack",26,"12ém",9.0),
+        Étudiant("amel",22,"9ém",10.20),
+        Étudiant("moussa",27,"11ém",8.10),
+        Étudiant("korro",20,"11",11.20))
+
+        val fi= list.filter{ it.année=="12ém"}
+
+        println(fi)
+       
+
+    }
+            </pre>
+        </code>
+    </div>
+    <div class="result">
+        <h3 class="headers">Résultat:</h3>
+        <pre style="color: black;font-size: 15px">
+    
+    Étudiant(nom=Amed, âge=25,année=12ém, note=7.9), 
+    Étudiant(nom=jack, âge=26, année=12ém, note=9.0)
+
+        </pre>
+        </div>
+        </div><br>
+    
+        <p class="pstyle-1">
+
+        <strong>Explication:</strong>Dans cet exemple nous avions voulu uniquement savoir les Etudiants qui sont en 12ém pour 
+        faire nous avions utilisé la fonction filter comme les exemples d,avant et on peut,faire beaucoup avec cette fonction
+
+       
+    </p><br>
+    
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+

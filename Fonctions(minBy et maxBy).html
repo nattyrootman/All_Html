@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<head>
+    <title>les Génériques</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+   <style>
+
+       body{
+          
+
+        box-sizing: border-box;
+
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all{
+        
+        display: grid;
+       grid-gap: 25px;
+ 
+        grid-template-columns: auto;
+        
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all>:not(.result){
+        background-color: rgb(21, 46, 46);
+    
+
+       }
+
+      .all>div{
+    
+         
+        overflow: auto;
+        align-items: center;
+
+        padding: 15px;
+      
+
+        border:1px solid rgb(226, 188, 188);
+       
+        border-radius: 15px;
+       }
+
+     
+        .Pr{
+        
+       
+        font-size:14px;
+         font: normal;
+           color: rgb(205, 87, 221);
+            margin-left: 5px;
+           
+       }
+
+       
+
+       .result{
+           overflow: auto;
+           
+           padding: 3px;
+           border-radius: 15px;
+           border: 2px solid black;
+          
+           font-size: 14px;
+           background-color: rgb(228, 130, 130);
+           color: black;
+       }
+    
+    .func{
+        color: lightsalmon;
+    }
+   
+
+    .com{
+    
+        color: rgb(125, 144, 112);
+        font-size: 10px;
+    }
+
+    .gen{
+        color: springgreen;
+    }
+
+    .pstyle:not(.pstyle-1){
+
+        font-family:'Times New Roman', Times, serif;
+        margin-right: 15px;
+        margin-left: 15px;
+        box-sizing: border-box ;
+        color: rgb(10, 10, 10);
+        word-break: normal;
+        margin-top: 35px;
+        margin-bottom: 0px;
+    }
+    .pstyle-1{
+        font-size: 12px;
+        color: slategray;
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font:bold;
+        
+    }
+    
+
+    
+
+
+   </style>
+</head>
+<body>
+    
+     
+    <p class="pstyle">
+        <h2>1 Une classe de Donnée Étudiant</h2>
+    
+        Dans cet exemple on va juste créer une classe de donnéés appelée Étudiant dans la quelle il y'a le nom l'âge
+        l'année et les notes et dans la fonction Main nous avions créer une liste qui accepte une liste type
+         Objet étudiant et pour afficher le nom ,âge année,et notes de chaque Étudiant nous allons faire une boucle(for loop )
+         qui permet de parcourir toute la collection
+         le but de cet exemple est de montrer comment ultiser les fonctions d'ordre supérieur dans une collection.
+         Dans les prochaines étapes nous utiliserons minByOrNull et maxByOrNull  pour
+         trouver la valeur la plus basse ou la plus élevée dans une collection d'objets.
+    </p><br><br>
+    
+  
+
+
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+ 
+    data <strong class="gen">class Étudiant</strong>(
+        val name:String,
+        val âge:Int,
+        val année:String ,
+        val note:Double )
+
+        
+<strong class="gen">
+fun main()</strong>  {
+
+    val list= listOf(
+        Étudiant("Amed",25,"4ém",16.9),
+        Étudiant("jack",26,"3ém",15.0),
+        Étudiant("amel",22,"2ém",15.20),
+        Étudiant("moussa",27,"5ém",17.10),
+        Étudiant("korro",20,"1ère",14.20))
+
+
+    println("nom\t    âge\t année \tnote\t")
+
+    for (i in list){
+
+        println("${i.name}    ${i.âge}    ${i.année}     ${i.note}")
+    }
+
+
+      
+     }
+ 
+        </pre>
+    </code>
+</div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+  nom	  âge  année    note
+  Amed    25    4ém     16.9
+  jack    26    3ém     15.0
+  amel    22    2ém     15.2
+  moussa  27    5ém     17.1
+  korro   20    1ère    14.2
+    </pre>
+    </div>
+    </div><br>
+   <p class="pstyle-1">
+
+   Explication :Nous avions crée une liste type Étudiant (objet) dans la fonction principale 
+   à partir de la classe de donnée Étudiant ou 
+   on a listé toutes les données d'Étudiants dans un tableau grace a une boucle qui a traversé toute la liste pour afficher toutes les données
+   de chaque Étudiant 
+    Dans les prochains tutos
+   nous nous voudrons savoir la plus petite note et la plus élevée mais aussi le jeune et le plus  âgé parmi les  Étudiants dans cette base 
+   de données 
+
+   </p><br><br>
+
+
+
+
+    <p class="pstyle">
+        <h2>2 Les Fonctions minByOrNull() et maxByOrNull() </h2>
+
+
+        pour determiner ou trouver une valeur minimale ou maximale dans une  collection plus complexe il faudra utiliser
+        la fonction minByOrNull pour trouver la plus valeur la plus basse et fonction maxByOrNull pour la valeur la plus grande dans une collecttion
+        Dans ce cas nous allons utiliser ces deux fonctions pour trouver  l'Étudiant qui a la plus grande note et celui de 
+        la pluts petite note ,mais aussi le plus jeune  Étudiant et le plus âgé à partir de notre base de donnée   Étudiant
+      
+    </p><br><br>
+
+
+    <p class="pstyle"> 
+
+    <h2>3 La Fonction minByOrNull(minimale) </h2>
+
+    Comment utiliser la fonction minByOrNull pour trouver  l'Étudiant qui a la plus petite note 
+    mais aussi le plus  jeune Edutiant
+
+</p>
+
+
+
+<div class="all">
+    <div class="item">
+        <code>
+            <pre class="Pr">
+     
+            
+    <strong class="gen">
+    fun main()</strong>  {
+
+
+        val list= listOf(
+            Étudiant("Amed",25,"4ém",16.9),
+            Étudiant("jack",26,"3ém",17.0),
+            Étudiant("amel",22,"2ém",15.20),
+            Étudiant("moussa",27,"5ém",17.10),
+            Étudiant("korro",20,"1ère",14.20))
+
+            
+    println(list.minByOrNull { it.note })
+
+    println(list.minByOrNull { it.âge })
+
+
+
+    }
+
+       
+    <strong class="com">
+    jack a la plus petite note qui est 15.0
+    et Korro est la plus jeune Étudiante 
+    </strong>
+            </pre>
+        </code>
+    </div>
+    <div class="result">
+        <h3 class="headers">Résultat:</h3>
+        <pre style="color: black;font-size: 15px">
+       jack: note=15.0 
+       Korro: âge=20
+        </pre>
+        </div>
+
+        </div><br>
+
+   <p class="pstyle-1">
+    <strong>Explication:</strong> dans cet exemple nous avions une liste d étudiants et avions voulu connaitre l'Étudiant
+    qui a la plus petite note qui est Jack  et le plus jeune  Étudiant qui est Korro ,
+    </p><br><br>
+
+
+
+
+
+    <p class="pstyle"> 
+
+        <h2>5 La Fonction maxByOrNull(maximale) </h2>
+    
+        Comment utiliser la fonction maxByOrNull() pour trouver  l'Étudiant qui a la plus petite note 
+        mais aussi le plus  jeune Edutiant
+    
+    </p>
+    
+    
+
+
+    
+<div class="all">
+    <div class="item">
+        <code>
+            <pre class="Pr">
+     
+        data <strong class="gen">class Étudiant</strong>(
+            val name:String,
+            val âge:Int,
+            val année:String ,
+            val note:Double )
+    
+            
+    <strong class="gen">
+    fun main()</strong>  {
+    
+        val list= listOf(
+            Étudiant("Amed",25,"4ém",16.9),
+            Étudiant("jack",26,"3ém",15.0),
+            Étudiant("amel",22,"2ém",15.20),
+            Étudiant("moussa",27,"5ém",17.10),
+            Étudiant("korro",20,"1ère",14.20))
+
+                   
+    println(list.maxByOrNull{ it.note })
+
+    println(list.maxByOrNull { it.âge })
+
+          
+         }
+     
+            </pre>
+        </code>
+    </div>
+    <div class="result">
+        <h3 class="headers">Résultat:</h3>
+        <pre style="color: black;font-size: 15px">
+            moussa: note=17.10 
+            moussa: âge=27
+        </pre>
+        </div>
+        </div><br>
+       <p class="pstyle-1">
+        <strong>Explication:</strong> dans cet exemple nous avions une liste d étudiants et avions voulu connaitre l'Étudiant
+        qui a la plus grande note qui est moussa  et le plus le agé parmi les Étudiant qui est aussi moussa 
+        </p>
+
+
+    </body>
+    </html>

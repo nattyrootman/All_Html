@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<head>
+    <title>les Génériques</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+   <style>
+
+       body{
+           background-color:rgb(228, 204, 204);
+
+        box-sizing: border-box;
+       
+       }
+
+       .all{
+        
+        display: grid;
+       grid-gap: 25px;
+ 
+        grid-template-columns: auto;
+        background-color:rgb(228, 204, 204);
+
+    }
+
+
+    .all>:not(.result,.pstyle,.pstyle-1){
+        background-color: rgb(21, 46, 46);
+    
+
+       }
+
+      .all>div{
+    
+         
+        overflow: auto;
+        align-items: center;
+
+        padding: 15px;
+      
+
+        border:1px solid rgb(226, 188, 188);
+       
+        border-radius: 15px;
+       }
+
+     
+        .Pr{
+        
+
+        font-size: 14px;
+         font: normal;
+           color: rgb(205, 87, 221);
+            margin-left: 5px;
+           word-break: normal;
+       }
+
+       .result{
+           
+           padding: 3px;
+           border-radius: 15px;
+           border: 2px solid black;
+          
+           font-size: 16px;
+           background-color: rgb(228, 130, 130);
+           color: black;
+       }
+    
+    .func{
+        color: lightsalmon;
+    }
+   
+
+    .com{
+    
+        color: slategray;
+        font-size: 10px;
+    }
+
+    .gen{
+        color: springgreen;
+    }
+
+    .pstyle:not(.pstyle-1){
+        font-family:'Times New Roman', Times, serif;
+        margin-right: 15px;
+        margin-left: 15px;
+        box-sizing: border-box ;
+        color: rgb(10, 10, 10);
+        word-break: normal;
+        margin-top: 35px;
+        margin-bottom: 0px;
+    }
+    
+
+    .pstyle-1{
+        font-size: 12px;
+        color: slategray;
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+    
+
+
+
+   </style>
+</head>
+<body>
+
+    <p class="pstyle">
+    L'objectif principal de la création des Générique est de permetttre au programmeurs la flexiblité pour ne pas etre limité
+   ça permet la réutilisation des objects ,des méthodes ou fonctions etc  
+   Un type Générique est un type qui n'est pas limitée à un seul type mais qui peut accpeter plusieurs type diffèrents
+   les  collections sont Génériques car elles acceptent des types variés tout depend de leur definition par le programmeur
+   List ,Set ,Map ,MutableList,etc
+    </p>
+
+
+
+    <p class="pstyle">
+
+        <h2>1 Générique avec un seul Type  unique et Restraint </h2>
+
+        Dans ce Tuto nous allons créer une classe( de donnéé )paramètrée nommée Person avec un seul type 
+        String (chaine de caratere) et nous allons créer une seconde classe nommée Maison ayant comme type de 
+        paramètre la classe Person 
+    </p>
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+<strong class="com">
+//classe  paramètrée ,
+j'utilise le mot anglais Person  
+comme classe (en Français Personne) 
+qui me semble un peu  long à reécrire
+ plusieurs fois dans ce tuto //
+</strong>
+ data<strong class="gen"> class Person</strong>(val name:String)
+
+  
+
+<strong class="gen">class Maison</strong> (val person: Person) {
+
+   <strong class="func">fun TypePerson()</strong>=person
+
+  }
+  <strong style="color: rgb(226, 215, 215);">
+________________________________</strong>
+
+<strong class="com">//fonction principale 
+  pour exécuter le code</strong>
+<strong class="func"> fun main()</strong>{
+
+<strong class="com">
+//type non générique un simple object
+ (classe Person)</strong>
+    val person= Person("Mamadou")
+    println (person.name)<strong class="com">
+        //résult est : Mamadou</strong>
+
+    <strong class="com">
+// type générique ici avec la classe Maison</strong>
+    val mson1= Maison(Person("Bathily")) 
+    val mson2= Maison(Person("Djibril"))
+    val mson3= Maison(Person("Moussa")) 
+    
+<strong class="com">
+//appel à la fonction TypePerson()
+ définie dans la classe maison//</strong>
+    println(mson1.TypePerson().name)
+    println(mson1.TypePerson().name)
+    println(mson3.TypePerson().name)
+    
+
+}
+  
+        </pre>
+    </code>
+</div>
+
+
+
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+        mson1: Bathily
+        mson2: Djibril
+        mson3: Moussa
+    </pre>
+    </div>
+    </div><br>
+
+ <p class="pstyle-1">
+
+ <strong>  Remarque</strong> premièr objet initialisé etait l'objet Person non générique et  ayant comme type argument String pour juste 
+   montre la la différence entre Générique et non Générique
+   les 3 objets Maison ayant comme arguments type Person si vous tentez de passer d'autre type d'argument que 
+   le type Person vous auriez une Erreur et votre code ne vas pas s'exécuter
+   et si vous voulez passer autre type d argument que le type Person vous devrez utilser le Type T que 
+   nous verrons dans le prochain tuto en bas 
+   
+ </p><br><br>
+
+
+
+    <p class="pstyle">
+        <h2>2 Avec le Type < T ></h2>
+        la Maison est pas est limitée pas  réutilisable; il ne peut contenir rien d’autre qu'Une Personne (class Person). Nous ne voulons  pas
+        pour écrire un nouveau type de support pour chaque type différent. Pour ce faire, nous utilisons un paramètre de type au lieu de
+        Person.
+        Pour définir un type générique, ajoutez des crochets < > contenant un ou plusieurs espaces réservés génériques et placez
+        cette spécification générique après le nom de la classe. Ici, l’espace réservé générique T représente l’inconnu
+        et est utilisé dans la classe comme s’il s’agissait d’un type régulier :nome de la class < T > 
+        la syntaxe est :class exemple < T > le T est juste une illutration vous pouvez mettre n'impore quelle lettre V E out autre à la 
+        T
+    </p>
+    
+      <div class="all">
+    <div class="=item">
+        <code>
+            <pre class="Pr">
+
+    <strong class="gen">class Maison < T></strong>(val valeur: T) {
+    
+    <strong class="func">fun toutType()</strong>:T=valeur
+    
+    }
+    <strong style="color: rgb(226, 215, 215);">
+ _________________________________</strong>
+<strong class="com">
+//fonction principale pour initialser les objects  </strong>
+<strong class="func"> fun main()</strong>{
+    
+<strong class="com">
+//type  générique ici avec la classe Maison </strong>
+    val perso= Maison(Person("Korro")) 
+    val typeString= Maison("un")
+    val typeEntier= Maison(41111) 
+    val typeFloatant= Maison(25.68) 
+        
+    <strong class="com">
+//appel à la fonction définie dans la classe maison</strong>
+    println (perso.toutType().name)
+    println (typeString.toutType())
+    println (typeEntier.toutType())
+    println (typeFloatant.toutType())
+
+    }
+            </pre>
+        </code>
+    </div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+        Korro
+        un
+        41111
+        25.68
+    </pre>
+    </div>  
+</div>
+
+<p class="pstyle-1">
+    Remarque:ici la classe Maison est paramètrée par le type T et lors de la créations des objets Maison 
+    nous avions fait passé plusieurs diffèrents types d'arguments  entier ,floatant chaine et objet Person 
+</p><br><br>
+
+
+<p class="pstyle">
+<h2>3 Type universel (Any)</h2>
+<p class>
+Any est est type universel qui est le parent de tous les types an Kotlin ,comme nom l'indique il accepte
+tout type d'argument .Si vous souhaitez passer une variété  de types à une fonction qui n'ont rien en commun 
+alors Any peut resoudre ce probleme 
+</p>
+
+<div class="all">
+    <div class="=item">
+        <code>
+            <pre class="Pr">
+      
+    <strong class="gen"> 
+class  Person</strong>(val name:String){
+
+    }
+
+            
+<strong class="gen">
+ class Maison </strong>(val valeur: Any){
+    
+    <strong class="func">fun toutType()</strong>:Any=valeur
+    
+ }
+ <strong style="color: rgb(226, 215, 215);">
+_______________________________</strong>
+    <strong class="com">
+//fonction principale 
+pour initialser les objects</strong>
+<strong class="func"> fun main()</strong>{
+    
+    val perso= Person("Rootman")<strong class="com">//accepté</strong>
+    val perso2= Person(4777)<strong class="com">
+//Erreur perso2 n'accepte pas un entier que le String("")</strong>
+ 
+    println(perso.name)
+    <strong class="com">// ressultat est:Rootman</strong>
+ 
+         
+ val maison1 = Maison("Yaya")
+ val maison2= Maison(4555)
+ val maison3= Maison(Person("LostMan"))
+ val msonLst= Maison(listOf("Adam","Jack","Ali"))
+          
+         
+<strong class="com">//
+appel à la fonction définie dans la classe maison
+ pour afficher les résultats//</strong>
+    println (maison1.toutType())
+    println (maison2.toutType())
+    println (maison3.toutType())
+    println (msonLst.toutType())
+
+    }
+            </pre>
+        </code>
+    </div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+        Rootman
+        Yaya
+        4555
+        Person@506e1b77
+        [Amed, Jack, Ali, Adam]
+    </pre>
+    </div>
+</div><br>
+<p class="pstyle-1">
+
+les objets Maison ici acceptent tout type d'argument c'est comme 
+vous dites à la  Maison (Objet) hein  accepte tout type du moment que le type de paramètre est défeni comme  Any qui 
+veut dire ici n'importe.
+</p><br><br>
+
+
+
+<p class="pstyle">
+    <h2> 4 Une Fonction Générique</h2>
+Pour définir une fonction générique, spécifiez un paramètre de type générique entre crochets avant le nom de la fonction
+
+</p>
+   
+
+    <div class="all">
+        <div class="=item">
+            <code>
+                <pre class="Pr">
+        
+                    <strong class="com">
+    //fonction pouvant contenir
+    différents types d'arguments)</strong>
+
+<strong class="func"> fun < T > TypeVarié</strong>(valeur:T){
+              
+         println(valeur)
+        
+  }
+  <strong style="color: rgb(226, 215, 215);">
+________________________________</strong>
+    
+        <strong class="com">
+//fonction ou méthode principale
+ pour exécuter le code</strong>
+<strong class="func"> fun main()</strong>{
+        
+    <strong class="com">
+//la fonction TypeVarié peut contenir
+une variété de types différents//</strong>
+   TypeVarié ("Koltin") 
+   TypeVarié (455)
+   TypeVarié (223.68)
+   TypeVarié (listOf("a","b",24))
+}
+                </pre>
+            </code>
+        </div>
+    <div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">      
+    Koltin
+    455
+    223.68
+    [a b, 24]
+        </pre>
+        </div>
+    </div>
+    
+
+
+
+</body>
+</html>

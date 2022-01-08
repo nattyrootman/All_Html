@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<head>
+    <title>les Génériques</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+   <style>
+
+       body{
+          
+
+        box-sizing: border-box;
+
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all{
+        
+        display: grid;
+       grid-gap: 25px;
+ 
+        grid-template-columns: auto;
+        
+        background-color:rgb(228, 204, 204);
+       }
+
+       .all>:not(.result){
+        background-color: rgb(21, 46, 46);
+    
+
+       }
+
+      .all>div{
+    
+         
+        overflow: auto;
+        align-items: center;
+
+        padding: 15px;
+      
+
+        border:1px solid rgb(226, 188, 188);
+       
+        border-radius: 15px;
+       }
+
+     
+        .Pr{
+        
+       
+        font-size:14px;
+         font: normal;
+           color: rgb(205, 87, 221);
+            margin-left: 5px;
+           
+       }
+
+       
+
+       .result{
+           overflow: auto;
+           
+           padding: 3px;
+           border-radius: 15px;
+           border: 2px solid black;
+          
+           font-size: 14px;
+           background-color: rgb(228, 130, 130);
+           color: black;
+       }
+    
+    .func{
+        color: lightsalmon;
+    }
+   
+
+    .com{
+    
+        color: rgb(125, 144, 112);
+        font-size: 10px;
+    }
+
+    .gen{
+        color: springgreen;
+    }
+
+    .pstyle:not(.pstyle-1){
+
+        font-family:'Times New Roman', Times, serif;
+        margin-right: 15px;
+        margin-left: 15px;
+        box-sizing: border-box ;
+        color: rgb(10, 10, 10);
+        word-break: normal;
+        margin-top: 35px;
+        margin-bottom: 0px;
+    }
+    .pstyle-1{
+        font-size: 12px;
+        color: slategray;
+        margin-top: 0px;
+        margin-left: 15px;
+        margin-right: 15px;
+        font:bold;
+        
+    }
+    
+
+    
+
+
+   </style>
+</head>
+<body>
+    
+     
+    <p class="pstyle">
+        <h2>Les Fonctions sumBy et sumByDouble</h2>
+ Les fonctions sumBy et sumByDouble renvoient une somme des éléments d’une collection.
+selon certains critères que vous lui transmettez via un lambda. Vous pouvez utiliser ces fonctions pour, par exemple, ajouter
+ensemble les valeurs de quantité pour chaque élément d’une liste<Produit> ou renvoyer la somme de chaque élément
+prix multiplié par la quantité.
+    
+       
+    </p><br><br>
+
+
+
+     
+    <p class="pstyle">
+        <h2>1 Fonction sumBy </h2>
+
+    la fonction sumBy est utilsé pour le type entier par exemple vous avez une liste  et vous voulez 
+    avoir  la somme de tous les élements  additionné de cette liste 
+
+    </p>
+
+
+
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+ 
+<strong class="func">
+fun main()</strong>  {
+
+    val l= listOf(1,2,3,4,5)
+
+    print("la somme:")
+    println(l.sumBy { it })
+
+    
+     }
+ 
+        </pre>
+    </code>
+</div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+    la somme:15
+    </pre>
+    </div>
+    </div><br>
+    <p class="pstyle-1">
+
+       <strong>Explication:</strong> dans cet exemple vous avions une liste  contenant 5 éléments de type Int (entier)
+       et nous avons une utilisé la fonction  sumBy pour donner la somme totale de tous les  éléments additionnés
+       cela donne comme cacul :1+2+3+4+5=15 
+       vous voyez comment avec la fonction sumBy() a simplié le cacul ,avec sumBy on a pas besoin de faire 
+       tout ce long cacul 1+2+3+4+5 au lieu list.sumBy(it) 
+
+    </p><br><br>
+
+
+   
+
+
+    
+     
+    <p class="pstyle">
+        <h2>2 Fonction sumByDouble() </h2>
+        La fonction sumByDouble() fonctionne de la meme manière que la fonction sumBy la seule difference est que
+        sumByDouble() est flottant (nombre fractionnel) ne fonctionne qu'avec le type Double (flottant)
+    </p>
+
+
+
+
+<div class="all">
+<div class="item">
+    <code>
+        <pre class="Pr">
+ 
+<strong class="func">
+fun main()</strong>  {
+
+
+    val l= listOf(2.5,4.2,6.9)
+
+    print("la somme:")
+    println(l.sumByDouble { it })
+ 
+     }
+ 
+        </pre>
+    </code>
+</div>
+<div class="result">
+    <h3 class="headers">Résultat:</h3>
+    <pre style="color: black;font-size: 15px">
+   
+    la somme:13.600000000000001
+    </pre>
+    </div>
+    </div><br>
+
+    <p class="pstyle-1">
+
+        <strong>Explication:</strong> dans cet exemple vous avions une liste  contenant 5 éléments de type Double (flottant)
+        et nous avons une utilisé la fonction  sumBy pour donner la somme totale de tous les  éléments additionnés
+        cela donne comme cacul 2.5+4.2+6.9 =13.600000000000001
+</p>
+
+
+//
+
+
+
+
+
+    
+     
+<p class="pstyle">
+    <h2>3 sumBy et sumByDouble dans une collection Complexe </h2>
+   
+
+    Dans cet exemple nous allons créer une classe (paramètrée) nommée Produit dans la quelle il y' a le nom ,prix et la quantité 
+
+    de chaque Produit dans  notre base de donnée et nous allons  créer une lise (list< Prduit> )contenant plusieurs Produits et enfin 
+    nous allons calculer en utilisant la Fonction sumBy (en entier) pour connaitre la quantité de tous les Produits 
+    mais nous allons aussi calculer
+    la somme totale du prix de tous les Produits en utilisant sumByDouble( en flottant)
+   
+    
+</p>
+
+
+
+
+
+<div class="all">
+    <div class="item">
+        <code>
+            <pre class="Pr">
+data<strong class="gen"> class Produit</strong>(
+
+    val nom: String,
+    quantité:Int,
+    val prix:Double
+
+                    )
+
+<strong style="color: rgb(226, 215, 215);">
+____________________________________</strong>
+    <strong class="func">
+    fun main()</strong>  {
+    
+        val prod= listOf(
+
+        Produit("Iphone",3,204.4),
+        Produit("Oppo",10,100.5),
+        Produit("Huawai",5,98.45),
+        Produit("Samsung",20,154.45)
+    )
+
+
+    println("Afficher la liste des Produits")
+    for (i in pros){
+        println(i)
+    }
+    
+    println(".........................")
+
+    println("la Quantité  de produts ")
+    val somQuant= prod.sumBy{it.quantité}
+
+    println("quantité: $somQuant")
+
+
+    println("..........................")
+
+   print("somme totale du prix des produits")
+   val somPrix= prod.sumByDouble{ it.prix }
+
+    println("somme:$somPrix euro") 
+
+
+            </pre>
+        </code>
+    </div>
+    <div class="result">
+        <h3 class="headers">Résultat:</h3>
+        <pre style="color: black;font-size: 15px">
+    Afficher la liste des Produits
+           
+    nom	    quantité	prix	
+    Iphone    3         204.4 euro 
+    Oppo      10        100.5 euro 
+    Huawai    5         98.45 euro 
+    Samsung   20        154.45 euro 
+    ................................
+     Quantité des produts 
+     quantité: 38
+    ................................
+    somme totale du prix des produits  
+    somme: 557.8 euro
+
+        </pre>
+        </div>
+        </div><br>
+    
+        <p class="pstyle-1">
+
+       <strong> Explication</strong>:Comme vous avez constaté nous avions crée une class appelée Produits (class de donnée)base de donnée
+        pour les Produits ou chauqe produit a son nom sa quantité disponible ainsi que son prix et dans notre fonction principale
+        main() nous avions créé une collection dont le type est Produits comme Kotlin peut inferer on a pas besoin de
+        specifier le type: List<Produit >
+        Apres avoir créé notre liste de produits nous avions fait une boucle pour afficher tous les produits 
+        et pour savoir la quantité de produits nous avions utilisé la fonction sumBy() 
+        et pour savoir la somme totale du prix de tous les produits nous avions utilisé la fonction
+        sumByDouble()
+    </p><br>
+    
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
